@@ -22,8 +22,7 @@ example (h : X = Y) : X ∪ Z = Y ∪ Z := by
     rotate_left
     · exact fun h => Or.inr h  
     · intro g₁
-      have : x ∈ Y := by
-        apply (set_ext.mp h g₁).mp
+      have : x ∈ Y := ((set_ext.mp h) x).mp g₁
       exact Or.inl this
 
 
