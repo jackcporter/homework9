@@ -25,10 +25,21 @@ example (h : X = Y) : X ∪ Z = Y ∪ Z := by
       have : x ∈ Y := ((set_ext.mp h) x).mp g₁
       exact Or.inl this
 
+example (h : X = Y) : X ∪ Z = Y ∪ Z := by
+  rw [h]
+  -- or rewrite [h]
+  -- rfl
 
-theorem problem1 : ∅ ∈ 𝒫  X := sorry 
+theorem problem1 : ∅ ∈ 𝒫 X := by
+  intro a
+  intro h
+  exact False.elim h
 
-theorem problem2 (U : β → Set α) : ∀ b, U b ⊆ BigUnion U := sorry 
+theorem problem2 (U : β → Set α) : ∀ b, U b ⊆ BigUnion U := by
+  intro b
+  intro a
+  intro h 
+  exact ⟨b, h⟩ 
 
 theorem problem3 (h : X ⊆ Y) : (X ×ˢ W) ⊆ (Y ×ˢ W) := sorry
 
